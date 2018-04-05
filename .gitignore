@@ -1,0 +1,8 @@
+.idea
+out/*
+*.iml
+target
+
+settings.xml
+
+src/main/res/database_config.json
