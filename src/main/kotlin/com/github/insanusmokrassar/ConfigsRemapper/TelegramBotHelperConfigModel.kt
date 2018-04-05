@@ -1,10 +1,9 @@
-package com.github.insanusmokrassar.TelegramBotHelper
+package com.github.insanusmokrassar.ConfigsRemapper
 
 import com.github.insanusmokrassar.IObjectK.extensions.remap
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
 import com.github.insanusmokrassar.IObjectK.realisations.SimpleIObject
 import com.github.insanusmokrassar.IObjectKRealisations.readIObject
-import com.github.insanusmokrassar.IObjectKRealisations.toIObject
 import com.github.insanusmokrassar.IObjectKRealisations.toObject
 
 private fun IObject<Any>.toCommandReceiver(): Receiver {

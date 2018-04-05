@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotHelper
+package com.github.insanusmokrassar.ConfigsRemapper
 
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
 import com.github.insanusmokrassar.IObjectK.realisations.SimpleIObject
@@ -19,6 +19,12 @@ private class SimpleReceiver(config: SimpleReceiverConfigClass): Receiver {
 
     override fun receive(data: IObject<Any>) {
         println(data)
+    }
+}
+
+private class ExitReceiver : Receiver {
+    override fun receive(data: IObject<Any>) {
+        Runtime.getRuntime().exit(0)
     }
 }
 

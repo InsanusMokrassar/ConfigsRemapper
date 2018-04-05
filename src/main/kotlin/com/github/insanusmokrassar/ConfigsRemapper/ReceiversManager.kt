@@ -1,11 +1,8 @@
-package com.github.insanusmokrassar.TelegramBotHelper
+package com.github.insanusmokrassar.ConfigsRemapper
 
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
-import com.github.insanusmokrassar.IObjectK.realisations.SimpleIObject
-import com.github.insanusmokrassar.IObjectK.utils.plus
 import com.github.insanusmokrassar.IObjectKRealisations.readIObject
 import com.github.insanusmokrassar.IObjectKRealisations.toObject
-import java.io.InputStream
 import java.util.logging.Logger
 
 class ReceiversManager(

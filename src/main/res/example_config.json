@@ -2,12 +2,12 @@
   "commands": [
     {
       "receiver": {
-        "classPath": "com.github.insanusmokrassar.TelegramBotHelper.SimpleReceiver",
+        "classPath": "com.github.insanusmokrassar.ConfigsRemapper.SimpleReceiver",
         "params": {
           "first": "Hello",
           "second": "world"
         },
-        "paramsObjectClass": "com.github.insanusmokrassar.TelegramBotHelper.SimpleReceiverConfigClass"
+        "paramsObjectClass": "com.github.insanusmokrassar.ConfigsRemapper.SimpleReceiverConfigClass"
       },
       "command": "example",
       "defaultParams": {
@@ -21,12 +21,7 @@
     },
     {
       "receiver": {
-        "classPath": "com.github.insanusmokrassar.TelegramBotHelper.SimpleReceiver",
-        "params": {
-          "first": "It is",
-          "second": "exit"
-        },
-        "paramsObjectClass": "com.github.insanusmokrassar.TelegramBotHelper.SimpleReceiverConfigClass"
+        "classPath": "com.github.insanusmokrassar.ConfigsRemapper.ExitReceiver"
       },
       "command": "exit"
     }

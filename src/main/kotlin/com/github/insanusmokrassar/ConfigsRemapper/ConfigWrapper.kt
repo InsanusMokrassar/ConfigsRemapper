@@ -1,7 +1,6 @@
-package com.github.insanusmokrassar.TelegramBotHelper
+package com.github.insanusmokrassar.ConfigsRemapper
 
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
-import com.github.insanusmokrassar.IObjectKRealisations.readIObject
 import com.github.insanusmokrassar.IObjectKRealisations.toObject
 
 open class ConfigWrapper {

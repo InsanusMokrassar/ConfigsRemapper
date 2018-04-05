@@ -1,7 +1,6 @@
-package com.github.insanusmokrassar.TelegramBotHelper
+package com.github.insanusmokrassar.ConfigsRemapper
 
 import java.lang.reflect.InvocationTargetException
-import kotlin.reflect.KClass
 
 /**
  * Return new instance of target class
