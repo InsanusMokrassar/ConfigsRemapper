@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.ConfigsRemapper
 import com.github.insanusmokrassar.IObjectK.extensions.remap
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
 import com.github.insanusmokrassar.IObjectK.realisations.SimpleIObject
+import com.github.insanusmokrassar.IObjectK.utils.plus
 import com.github.insanusmokrassar.IObjectKRealisations.readIObject
 import com.github.insanusmokrassar.IObjectKRealisations.toObject
 
@@ -29,14 +30,16 @@ class TelegramBotHelperConfigModel {
         }
 
     fun makeParamsObject(config: IObject<Any>): IObject<Any> {
-        return mapRules ?.let {
-            mapRules ->
-            (defaultParams ?. toString() ?. byteInputStream() ?. readIObject() /* safe copy */ ?: SimpleIObject()).also {
-                mapRules.remap(
-                        config,
-                        it
-                )
-            }
-        } ?: config
+        return SimpleIObject(
+                mapRules ?.let {
+                    mapRules ->
+                    config + (defaultParams ?. toString() ?. byteInputStream() ?. readIObject() /* safe copy */ ?: SimpleIObject()).also {
+                        mapRules.remap(
+                                config,
+                                it
+                        )
+                    }
+                } ?: config
+        )
     }
 }
