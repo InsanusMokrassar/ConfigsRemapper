@@ -33,7 +33,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.2.31</kotlin.version>
-        <kotlin.coroutines.version>0.22.3</kotlin.coroutines.version>
         <dokka.version>0.9.16</dokka.version>
         <gpg.version>1.6</gpg.version>
         <assembly.version>2.6</assembly.version>
@@ -193,11 +192,6 @@
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlinx</groupId>
-            <artifactId>kotlinx-coroutines-core</artifactId>
-            <version>${kotlin.coroutines.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit</artifactId>
             <version>${kotlin.version}</version>
@@ -206,12 +200,12 @@
         <dependency>
             <groupId>com.github.insanusmokrassar</groupId>
             <artifactId>IObjectK</artifactId>
-            <version>1.10.2</version>
+            <version>1.10.4</version>
         </dependency>
         <dependency>
             <groupId>com.github.insanusmokrassar</groupId>
             <artifactId>IObjectKRealisations</artifactId>
-            <version>1.9.4</version>
+            <version>1.10.1</version>
         </dependency>
     </dependencies>
 </project>
