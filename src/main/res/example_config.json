@@ -9,7 +9,7 @@
         },
         "paramsObjectClass": "com.github.insanusmokrassar.ConfigsRemapper.SimpleReceiverConfigClass"
       },
-      "command": "example",
+      "commands": ["example"],
       "defaultParams": {
         "first": "Hello param",
         "second": "world param"
@@ -23,7 +23,7 @@
       "receiver": {
         "classPath": "com.github.insanusmokrassar.ConfigsRemapper.ExitReceiver"
       },
-      "command": "exit"
+      "commands": ["exit"]
     }
   ]
 }

@@ -3,16 +3,27 @@ package com.github.insanusmokrassar.ConfigsRemapper
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
 import com.github.insanusmokrassar.IObjectKRealisations.readIObject
 import com.github.insanusmokrassar.IObjectKRealisations.toObject
+import kotlinx.coroutines.experimental.async
 import java.util.logging.Logger
 
 class ReceiversManager(
         vararg configs: TelegramBotHelperConfigModel
 ) {
-    private val commandsMap = mapOf(
-            *configs.map {
-                it.command to it
-            }.toTypedArray()
-    )
+    private val commandsMap = configs.let {
+        val map = HashMap<String, MutableSet<TelegramBotHelperConfigModel>>()
+        it.forEach {
+            currentConfigModel ->
+            currentConfigModel.commands.forEach {
+                command ->
+                (map[command] ?:let {
+                    HashSet<TelegramBotHelperConfigModel>().apply {
+                        map[command] = this
+                    }
+                }).add(currentConfigModel)
+            }
+        }
+        map
+    }
     constructor(vararg configs: IObject<Any>) : this(
             *configs.map { it.toObject(TelegramBotHelperConfigModel::class.java) }.toTypedArray()
     )
@@ -32,10 +43,15 @@ class ReceiversManager(
             }
     ) {
         try {
-            commandsMap[command]?.apply {
-                receiverObject.receive(
-                        makeParamsObject(config)
-                )
+            commandsMap[command] ?.apply {
+                forEach {
+                    configModel ->
+                    async {
+                        configModel.receiverObject(
+                                configModel.makeParamsObject(config)
+                        )
+                    }
+                }
             } ?: throw IllegalArgumentException("Command receiver not found: $command")
         } catch (e: Exception) {
             exceptionHandler(e)
