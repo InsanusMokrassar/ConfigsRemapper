@@ -7,16 +7,16 @@ import kotlinx.coroutines.experimental.async
 import java.util.logging.Logger
 
 class ReceiversManager(
-        vararg configs: TelegramBotHelperConfigModel
+        vararg configs: ConfigModel
 ) {
     private val commandsMap = configs.let {
-        val map = HashMap<String, MutableSet<TelegramBotHelperConfigModel>>()
+        val map = HashMap<String, MutableSet<ConfigModel>>()
         it.forEach {
             currentConfigModel ->
             currentConfigModel.commands.forEach {
                 command ->
                 (map[command] ?:let {
-                    HashSet<TelegramBotHelperConfigModel>().apply {
+                    HashSet<ConfigModel>().apply {
                         map[command] = this
                     }
                 }).add(currentConfigModel)
@@ -25,7 +25,7 @@ class ReceiversManager(
         map
     }
     constructor(vararg configs: IObject<Any>) : this(
-            *configs.map { it.toObject(TelegramBotHelperConfigModel::class.java) }.toTypedArray()
+            *configs.map { it.toObject(ConfigModel::class.java) }.toTypedArray()
     )
     constructor(vararg configs: String) : this(
             *configs.map { it.byteInputStream().readIObject() }.toTypedArray()

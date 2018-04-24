@@ -17,7 +17,7 @@ private fun IObject<Any>.toCommandReceiver(): Receiver {
     }
 }
 
-class TelegramBotHelperConfigModel {
+class ConfigModel {
     val receiver: IObject<Any> = SimpleIObject()
     val commands: List<String> = emptyList()
     val defaultParams: IObject<Any>? = null

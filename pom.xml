@@ -5,7 +5,7 @@
     
     <groupId>com.github.insanusmokrassar</groupId>
     <artifactId>ConfigsRemapper</artifactId>
-    <version>0.2b</version>
+    <version>0.2.1b</version>
     <packaging>jar</packaging>
     
     <name>${project.artifactId}</name>
@@ -32,7 +32,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.2.31</kotlin.version>
+        <kotlin.version>1.2.40</kotlin.version>
         <kotlin.coroutines.version>0.22.3</kotlin.coroutines.version>
         <dokka.version>0.9.16</dokka.version>
         <gpg.version>1.6</gpg.version>
