@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.ConfigsRemapper
 
 import com.github.insanusmokrassar.IObjectK.extensions.remap
+import com.github.insanusmokrassar.IObjectK.interfaces.CommonIObject
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
 import com.github.insanusmokrassar.IObjectK.realisations.SimpleIObject
 import com.github.insanusmokrassar.IObjectK.utils.plus
@@ -29,7 +30,7 @@ class ConfigModel {
             receiverCachedObject = it
         }
 
-    fun makeParamsObject(config: IObject<Any>): IObject<Any> {
+    fun makeParamsObject(config: CommonIObject<String, Any>): IObject<Any> {
         return SimpleIObject(
                 mapRules ?.let {
                     mapRules ->
