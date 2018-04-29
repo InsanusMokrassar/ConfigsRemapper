@@ -1,13 +1,16 @@
 package com.github.insanusmokrassar.ConfigsRemapper
 
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
+import com.github.insanusmokrassar.IObjectK.realisations.SimpleIObject
+import com.github.insanusmokrassar.IObjectK.utils.plus
 import com.github.insanusmokrassar.IObjectKRealisations.readIObject
 import com.github.insanusmokrassar.IObjectKRealisations.toObject
 import kotlinx.coroutines.experimental.async
 import java.util.logging.Logger
 
 class ReceiversManager(
-        vararg configs: ConfigModel
+        vararg configs: ConfigModel,
+        private val handlingMixinObject: IObject<Any> = SimpleIObject()
 ) {
     private val commandsMap = configs.let {
         val map = HashMap<String, MutableSet<ConfigModel>>()
@@ -48,7 +51,7 @@ class ReceiversManager(
                     configModel ->
                     async {
                         configModel.receiverObject(
-                                configModel.makeParamsObject(config)
+                                configModel.makeParamsObject(handlingMixinObject + config)
                         )
                     }
                 }
