@@ -9,8 +9,8 @@ import kotlinx.coroutines.experimental.async
 import java.util.logging.Logger
 
 class ReceiversManager(
-        vararg configs: ConfigModel,
-        private val handlingMixinObject: IObject<Any> = SimpleIObject()
+        private val handlingMixinObject: IObject<Any> = SimpleIObject(),
+        vararg configs: ConfigModel
 ) {
     private val commandsMap = configs.let {
         val map = HashMap<String, MutableSet<ConfigModel>>()
@@ -27,10 +27,18 @@ class ReceiversManager(
         }
         map
     }
-    constructor(vararg configs: IObject<Any>) : this(
+    constructor(
+            handlingMixinObject: IObject<Any> = SimpleIObject(),
+            vararg configs: IObject<Any>
+    ) : this(
+            handlingMixinObject,
             *configs.map { it.toObject(ConfigModel::class.java) }.toTypedArray()
     )
-    constructor(vararg configs: String) : this(
+    constructor(
+            handlingMixinObject: IObject<Any> = SimpleIObject(),
+            vararg configs: String
+    ) : this(
+            handlingMixinObject,
             *configs.map { it.byteInputStream().readIObject() }.toTypedArray()
     )
 

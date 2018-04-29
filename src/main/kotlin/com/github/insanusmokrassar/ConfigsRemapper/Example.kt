@@ -36,7 +36,7 @@ private val endInputRegex = Regex("\n\n$")
 
 fun main(args: Array<String>) {
     ClassLoader.getSystemResourceAsStream("example_config.json").readIObject().toObject(ExampleConfig::class.java).let {
-        ReceiversManager(*it.commands.toTypedArray())
+        ReceiversManager(configs = *it.commands.toTypedArray())
     }.apply {
         val reader = Scanner(System.`in`)
         while (true) {

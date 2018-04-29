@@ -5,7 +5,7 @@
     
     <groupId>com.github.insanusmokrassar</groupId>
     <artifactId>ConfigsRemapper</artifactId>
-    <version>0.2.2b</version>
+    <version>0.2.3b</version>
     <packaging>jar</packaging>
     
     <name>${project.artifactId}</name>
@@ -206,12 +206,12 @@
         <dependency>
             <groupId>com.github.insanusmokrassar</groupId>
             <artifactId>IObjectK</artifactId>
-            <version>1.10.4</version>
+            <version>1.10.5</version>
         </dependency>
         <dependency>
             <groupId>com.github.insanusmokrassar</groupId>
             <artifactId>IObjectKRealisations</artifactId>
-            <version>1.10.1</version>
+            <version>1.10.2</version>
         </dependency>
     </dependencies>
 </project>
