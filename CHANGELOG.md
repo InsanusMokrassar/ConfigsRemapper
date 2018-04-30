@@ -12,3 +12,7 @@
 ## v0.2.3b
 
 * Hotfix of constructors of ReceiversManager
+
+## v0.2.4b
+
+* Added possibility to use `handle` in ReceiversManager as async or sync receiver.

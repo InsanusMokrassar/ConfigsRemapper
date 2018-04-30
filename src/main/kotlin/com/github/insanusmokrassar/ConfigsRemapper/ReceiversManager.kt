@@ -12,6 +12,7 @@ class ReceiversManager(
         private val handlingMixinObject: IObject<Any> = SimpleIObject(),
         vararg configs: ConfigModel
 ) {
+    private val logger = Logger.getLogger(ReceiversManager::class.java.simpleName)
     private val commandsMap = configs.let {
         val map = HashMap<String, MutableSet<ConfigModel>>()
         it.forEach {
@@ -45,6 +46,7 @@ class ReceiversManager(
     fun handle(
             command: String,
             config: IObject<Any>,
+            async: Boolean = true,
             exceptionHandler: (Exception) -> Unit = {
                 Logger.getGlobal().throwing(
                         this::class.java.simpleName,
@@ -57,10 +59,24 @@ class ReceiversManager(
             commandsMap[command] ?.apply {
                 forEach {
                     configModel ->
-                    async {
-                        configModel.receiverObject(
-                                configModel.makeParamsObject(handlingMixinObject + config)
-                        )
+                    if (async) {
+                        async {
+                            configModel.receiverObject(
+                                    configModel.makeParamsObject(handlingMixinObject + config)
+                            )
+                        }
+                    } else {
+                        try {
+                            configModel.receiverObject(
+                                    configModel.makeParamsObject(handlingMixinObject + config)
+                            )
+                        } catch (e: Exception) {
+                            logger.throwing(
+                                    ReceiversManager::class.java.simpleName,
+                                    "Handling command by receiver",
+                                    e
+                            )
+                        }
                     }
                 }
             } ?: throw IllegalArgumentException("Command receiver not found: $command")
