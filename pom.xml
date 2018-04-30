@@ -5,7 +5,7 @@
     
     <groupId>com.github.insanusmokrassar</groupId>
     <artifactId>ConfigsRemapper</artifactId>
-    <version>0.2.4b</version>
+    <version>0.2.5b</version>
     <packaging>jar</packaging>
     
     <name>${project.artifactId}</name>

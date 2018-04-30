@@ -16,3 +16,8 @@
 ## v0.2.4b
 
 * Added possibility to use `handle` in ReceiversManager as async or sync receiver.
+
+## v0.2.5b
+
+* Replace config argument type in `ReceiversManager#handle` by `CommonIObject<String, Any`
+* Upgraded method of catching exceptions in `ReceiversManager#handle` 

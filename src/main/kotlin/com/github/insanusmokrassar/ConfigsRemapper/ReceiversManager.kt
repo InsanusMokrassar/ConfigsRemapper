@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.ConfigsRemapper
 
+import com.github.insanusmokrassar.IObjectK.interfaces.CommonIObject
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
 import com.github.insanusmokrassar.IObjectK.realisations.SimpleIObject
 import com.github.insanusmokrassar.IObjectK.utils.plus
@@ -45,10 +46,10 @@ class ReceiversManager(
 
     fun handle(
             command: String,
-            config: IObject<Any>,
+            config: CommonIObject<String, Any>,
             async: Boolean = true,
             exceptionHandler: (Exception) -> Unit = {
-                Logger.getGlobal().throwing(
+                logger.throwing(
                         this::class.java.simpleName,
                         "handle",
                         it
@@ -61,9 +62,13 @@ class ReceiversManager(
                     configModel ->
                     if (async) {
                         async {
-                            configModel.receiverObject(
-                                    configModel.makeParamsObject(handlingMixinObject + config)
-                            )
+                            try {
+                                configModel.receiverObject(
+                                        configModel.makeParamsObject(handlingMixinObject + config)
+                                )
+                            } catch (e: Exception) {
+                                exceptionHandler(e)
+                            }
                         }
                     } else {
                         try {
@@ -71,11 +76,7 @@ class ReceiversManager(
                                     configModel.makeParamsObject(handlingMixinObject + config)
                             )
                         } catch (e: Exception) {
-                            logger.throwing(
-                                    ReceiversManager::class.java.simpleName,
-                                    "Handling command by receiver",
-                                    e
-                            )
+                            exceptionHandler(e)
                         }
                     }
                 }
